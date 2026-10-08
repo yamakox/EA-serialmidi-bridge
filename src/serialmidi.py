@@ -275,6 +275,35 @@ def describe_midi_message(message):
             return f"SysEx: {len(message)} bytes"
         else:
             return f"SysEx (incomplete): {message}"
+    elif status == 0xF1 and len(message) > 1:
+        return f"MTC Quarter Frame: DATA {message[1]:<3}"
+    elif status == 0xF2 and len(message) > 2:
+        position = (message[2] << 7) | message[1]
+        return f"Song Position: POS {position:<5}"
+    elif status == 0xF3 and len(message) > 1:
+        return f"Song Select: SONG {message[1]:<3}"
+    elif status == 0xF4:
+        return "Undefined: 0xF4"
+    elif status == 0xF5:
+        return "Undefined: 0xF5"
+    elif status == 0xF6:
+        return "Tune Request"
+    elif status == 0xF7:
+        return "End of Exclusive"
+    elif status == 0xF8:
+        return "Timing Clock"
+    elif status == 0xF9:
+        return "Undefined: 0xF9"
+    elif status == 0xFA:
+        return "Start"
+    elif status == 0xFB:
+        return "Continue"
+    elif status == 0xFC:
+        return "Stop"
+    elif status == 0xFD:
+        return "Undefined: 0xFD"
+    elif status == 0xFE:
+        return "Active Sensing"
     elif status == 0xFF:
         return "System Reset"
     else:
