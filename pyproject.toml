@@ -1,0 +1,31 @@
+[project]
+name = "ea-serialmidi-bridge"
+version = "0.1.0"
+description = "A Serial MIDI bridge application with a GUI"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "altgraph==0.17.4",
+    "macholib==1.16.3",
+    "packaging==25.0",
+    "pyinstaller==6.13.0",
+    "pyinstaller-hooks-contrib==2025.3",
+    "pyqt6==6.9.0",
+    "pyqt6-qt6==6.9.0",
+    "pyqt6-sip==13.10.0",
+    "pyserial==3.5",
+    "python-rtmidi==1.5.8",
+]
+
+[project.scripts]
+serialmidi-gui-app = "ea_serialmidi_bridge.gui:main"
+
+[build-system]
+requires = ["poetry-core>=2,<3"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [
+    { include = "*.py", from = "src", to = "ea_serialmidi_bridge" },
+    { include = "assets/styles.qss", from = "src", to = "ea_serialmidi_bridge" },
+]

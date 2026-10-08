@@ -6,7 +6,6 @@ import threading
 import logging
 import sys
 from PyQt6 import QtCore, QtWidgets
-import serialmidi
 
 class SerialMIDI:
     def __init__(self, gui, serial_port_name, serial_baud, midi_in_name, midi_out_name):
@@ -271,7 +270,7 @@ class SerialMIDIApp(QtWidgets.QWidget):
             if midi_out_name == "Not Connected":
                 midi_out_name = None
 
-            self.serial_midi = serialmidi.SerialMIDI(
+            self.serial_midi = SerialMIDI(
                 gui=self,
                 serial_port_name=serial_port_name,
                 serial_baud=baud_rate,

@@ -1,7 +1,7 @@
 import sys
 import threading
 import logging
-import serialmidi
+from ea_serialmidi_bridge import serialmidi
 import os
 from PyQt6 import QtWidgets, QtCore, QtGui
 from PyQt6.QtGui import QTextCursor
